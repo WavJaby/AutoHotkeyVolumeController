@@ -1,13 +1,13 @@
 ;######## 設定 ########
-closeDelay=1000
-backGroundColor=1A1A1A
-barColor=666666
-titleColor=FFFFFF
-title=音量
-barHeight=12
-width=100
-height=50
-gap=25
+closeDelay = 1000
+backGroundColor = 1A1A1A
+barColor = 666666
+titleColor = FFFFFF
+title = 音量
+barHeight = 12
+width = 100
+height = 50
+gap = 25
 ;#####################
 
 
@@ -18,8 +18,11 @@ Volume_Up::
 Volume_Down::
     EditValue("-2")
     return
-Volume_Mute:: 
-    EditValue(mute)
+
+Volume_Mute::
+    SoundSet, +1,,mute
+    gosub, VolumeShow
+    sleep, 50
     return
 
 ;設定音量
@@ -46,7 +49,7 @@ VolumeShow:
 		;WM title文字粗細
 		;ZY 進度條與文字的間隙
 		;C 文字至中
-		volumeBarOptions= CW%backGroundColor% CT%titleColor% CB%barColor% x%mX% y%mY% w%width% h%height% B FS8 WS700 FM8 WM700 ZH%barHeight% ZY3 C11
+		volumeBarOptions = CW%backGroundColor% CT%titleColor% CB%barColor% x%mX% y%mY% w%width% h%height% B FS8 WS700 FM8 WM700 ZH%barHeight% ZY3 C11
 		Progress Hide %volumeBarOptions%,, %title%, "volumeBar", Tahoma
 		Volume_OSD_c:= !Volume_OSD_c
 	}
