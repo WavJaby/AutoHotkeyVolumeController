@@ -56,9 +56,13 @@ VolumeShow:
 	;顯示
 	Progress Show
 	SoundGet, volume
-	WinSet, Transcolor, Black 225, "volumeBar" ;設定視窗名稱"volumeBar"的透明度
-	Progress % volume:= Round(Volume), %volume% `% ;設定進度條的數值, 進度文字
-	SetTimer, VolumeClose, %closeDelay% ;設定時間隱藏 volumeBar
+	;設定視窗名稱"volumeBar"的透明度
+	WinSet, Transcolor, Black 225, "volumeBar"
+	volume:= Round(Volume)
+	;設定進度條的數值, 進度文字
+	Progress %volume%, %volume% `%
+	;設定時間隱藏 volumeBar
+	SetTimer, VolumeClose, %closeDelay%
 	return
 
 VolumeClose:
